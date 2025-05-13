@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/magcalas/posts';
+const API_URL = 'https://finals-api-app-project.onrender.com/magcalas/posts';
 
 // Fetch all posts
 export const fetchPosts = async () => {
