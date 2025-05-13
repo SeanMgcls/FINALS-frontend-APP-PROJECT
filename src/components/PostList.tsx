@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { fetchPosts, deletePost } from '../api/post'; // Import deletePost function
+import { Link, useNavigate } from 'react-router-dom';
+import { fetchPosts, deletePost } from '../api/post';
 
 const PostList: React.FC = () => {
   const [posts, setPosts] = useState<any[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadPosts = async () => {
@@ -78,20 +79,35 @@ const PostList: React.FC = () => {
               <p style={{ color: '#777', fontSize: '14px' }}>
                 {new Date(post.timestamp).toLocaleString()}
               </p>
-              <button
-                style={{
-                  padding: '8px 16px',
-                  backgroundColor: '#DC3545',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '4px',
-                  cursor: 'pointer',
-                  marginTop: '10px',
-                }}
-                onClick={() => handleDelete(post.id)} // Attach delete handler
-              >
-                Delete
-              </button>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px' }}>
+                <button
+                  style={{
+                    padding: '8px 16px',
+                    backgroundColor: '#007BFF',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '4px',
+                    cursor: 'pointer',
+                    marginRight: '10px',
+                  }}
+                  onClick={() => navigate(`/edit/${post.id}`)} // Navigate to the Edit page
+                >
+                  Edit
+                </button>
+                <button
+                  style={{
+                    padding: '8px 16px',
+                    backgroundColor: '#DC3545',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '4px',
+                    cursor: 'pointer',
+                  }}
+                  onClick={() => handleDelete(post.id)} // Attach delete handler
+                >
+                  Delete
+                </button>
+              </div>
             </li>
           ))}
         </ul>
