@@ -20,7 +20,7 @@ const CreatePost: React.FC = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh',  paddingLeft: '500px', boxSizing: 'border-box' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', boxSizing: 'border-box' }}>
       <h1>Create a New Post</h1>
       <form
         onSubmit={handleSubmit}
